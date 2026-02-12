@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Nusrat</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js"></script>
+</head>
+
+<body>
+    <canvas id="particles-canvas"></canvas>
+
+    <div class="audio-control">
+        <button id="bg-music-toggle" class="icon-btn" aria-label="Toggle Start Music">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 18V5l12-2v13"></path>
+                <circle cx="6" cy="18" r="3"></circle>
+                <circle cx="18" cy="16" r="3"></circle>
+            </svg>
+        </button>
+    </div>
+
+    <!-- AUDIO FILES -->
+    <audio id="bg-music" loop>
+        <source src="bag.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="narration-audio">
+        <source src="download.wav" type="audio/wav">
+    </audio>
+
+    <!-- SECTION 1: LANDING -->
+    <section id="landing" class="screen active">
+        <div class="content-center">
+            <h1 class="typing-text"></h1>
+            <button id="start-btn" class="btn-glow">Start</button>
+        </div>
+    </section>
+
+    <!-- SECTION 2: LETTER REVEAL -->
+    <section id="letter-reveal" class="screen">
+        <div class="envelope-container">
+            <div class="envelope" id="envelope">
+                <div class="front-face">
+                    <h2 class="recipient-name">Hey Nusrat</h2>
+                    <p class="open-instruction">Please open this</p>
+                </div>
+                <div class="letter" id="letter-paper">
+                    <div class="letter-content custom-scrollbar">
+                        <p class="greeting">Hey Nusrat…</p>
+                        <p>If you're hearing this, it means I finally chose courage over hesitation. I don’t know how
+                            this will reach you, or when — but these words have been waiting inside me for a long time.
+                        </p>
+                        <p>I still remember the first moment I saw you at the science fest in Rajshahi College. It
+                            wasn’t dramatic. No music, no slow motion — just a simple moment in a crowded place. Yet
+                            somehow, in a hall full of people, my attention learned your presence before my mind
+                            understood why.</p>
+                        <p>Some people enter memory slowly.<br>You didn’t.<br>You stayed instantly.</p>
+                        <p>After that day, something changed quietly in me. I found myself remembering your smile at
+                            random times — between study chapters, during late nights, in small pauses of the day when
+                            thoughts usually wander. And they kept wandering back to you.</p>
+                        <p>I wanted to message you many times. More times than you will ever know. I typed words and
+                            deleted them. I rewrote simple greetings until they felt too complicated to send. Not
+                            because I didn’t care — but because I cared enough to not want to disturb you. Respect held
+                            my hand back when emotion wanted to press “send.”</p>
+                        <p>I tried small steps — replying to your notes, your stories — building tiny bridges of
+                            conversation. Even then I wondered if I was being too much. I never wanted my interest to
+                            feel like pressure. I only wanted it to feel like sincerity.</p>
+                        <p>This feeling I have — it isn’t loud. It isn’t possessive. It isn’t a storm.<br>It’s more like
+                            a steady light that refuses to turn off.</p>
+                        <p>I won’t say you are the only thought in my world — because life is bigger than that — but you
+                            became a meaningful one. A rare one. The kind that makes ordinary days feel slightly
+                            brighter without asking permission.</p>
+                        <p>I’m writing this on the 12th of February, 2026 — not knowing what the future version of this
+                            moment looks like. Maybe by the time you hear this, things will be different. Maybe you’ll
+                            smile and understand. Maybe you’ll choose distance. Maybe you’ll simply stay silent. I want
+                            you to know — every honest response is respected.</p>
+                        <p>I’m a shy person. Not mysterious — just quiet. Courage doesn’t come naturally to me. I have
+                            to build it like a staircase — step by step. These words are one of those steps.</p>
+                        <p>I like you — deeply and gently.<br>Not just for how you look — though your eyes carry a calm
+                            depth and your smile has a way of making moments feel warm — but for the way your presence
+                            feels real and grounded.</p>
+                        <p>You don’t owe me anything for these feelings. Feelings are not debts. They are gifts offered
+                            without demand.</p>
+                        <p>I’m not here to claim you.<br>Not here to rush you.<br>Not here to make promises I can’t
+                            prove yet.</p>
+                        <p>I’m here to say: if you are ever comfortable, I would truly like the chance to know you —
+                            through conversation, through shared thoughts, through simple human connection.</p>
+                        <p>And if your answer is no — I will still be thankful. Because you unknowingly taught a quiet
+                            heart how to speak bravely.</p>
+                        <p>Whatever happens after this message — my respect for you remains unchanged.</p>
+                        <p class="signature">— From the shy guy who finally learned how to say what he feels.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="controls fade-in-delayed" style="justify-content: flex-end;">
+                <button id="next-to-choice" class="btn-glow small">Continue</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: INTERACTIVE CHOICE -->
+    <section id="choice" class="screen">
+        <div class="glass-card center-card">
+            <h2>No pressure. No expectations. Just honesty.</h2>
+            <div class="button-group">
+                <button id="btn-yes" class="btn-outline">Yes, I feel the same</button>
+                <button id="btn-no" class="btn-outline">I don't feel the same</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: FINAL SCREEN (REJECTION) -->
+    <section id="final-reject" class="screen">
+        <div class="content-center">
+            <h2 class="final-msg">Whatever your answer — my respect stays the same.</h2>
+        </div>
+    </section>
+
+    <!-- SECTION 5: FINAL SCREEN (ACCEPTANCE) -->
+    <section id="final-accept" class="screen">
+        <div class="content-center">
+            <h2 class="final-msg pink-glow">Thank you for making my brave moment worth it. <br> You just made my world
+                brighter. ❤️</h2>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
